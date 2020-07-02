@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "620690694817",
+    "firebase_url": "https://desquaredcalc.firebaseio.com",
+    "project_id": "desquaredcalc",
+    "storage_bucket": "desquaredcalc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620690694817:android:1e1a2cdbd32b067e24c6e0",
+        "android_client_info": {
+          "package_name": "com.thanosfisherman.desquaredcalc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620690694817-oes5ikdk41isi0qel24gsm145skjla03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh83RH2Inn-Zi8omcxpd0_O9T4eYYtu1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620690694817-oes5ikdk41isi0qel24gsm145skjla03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
