@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Desquared Calculator</string>
+    <string name="success">Success</string>
+    <string name="try_again">Something went wrong. Please try again</string>
+    <string name="network_error">A network error occurred. Please try again</string>
+    <string name="and_more">And %1$d more</string>
+    <string name="action_settings">Settings</string>
+</resources>

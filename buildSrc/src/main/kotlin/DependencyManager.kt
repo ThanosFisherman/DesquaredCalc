@@ -3,7 +3,7 @@ import org.gradle.api.artifacts.ProjectDependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.addAppModuleDependencies() {
-    //ModuleDependency.getAppModuleDependencies().forEach { implementation(project(it)) }
+    ModuleDependency.getAppModuleDependencies().forEach { implementation(project(it)) }
     CoreDependency.getAll().forEach { implementation(it) }
     //FirebaseDependency.getAll().forEach { implementation(it) }
 }
@@ -24,16 +24,10 @@ fun DependencyHandler.addDataNetworkDependencies() {
     NetworkDependency.getAll().forEach { implementation(it) }
 }
 
-fun DependencyHandler.addDataPrefsDependencies() {
+fun DependencyHandler.addDataPersistenceDependencies() {
     implementation(project(ModuleDependency.DOMAIN))
     CoreDependency.getAll().forEach { implementation(it) }
-    PrefsDependency.getAll().forEach { implementation(it) }
-}
-
-fun DependencyHandler.addDataBluetoothDependencies() {
-    implementation(project(ModuleDependency.DOMAIN))
-    CoreDependency.getAll().forEach { implementation(it) }
-    BluetoothDependency.getAll().forEach { implementation(it) }
+    PersistenceDependency.getAll().forEach { implementation(it) }
 }
 
 fun DependencyHandler.addTestDependencies() {
@@ -51,12 +45,19 @@ fun DependencyHandler.addTestDependencies() {
     testImplementation(TestLibraryDependency.MOCKITO_KOTLIN)
     testImplementation(TestLibraryDependency.ANDROID_X_CORE_TESTING)
     testImplementation(TestLibraryDependency.ANDROID_X_TEST_RULES)
+    testImplementation(TestLibraryDependency.ROOM_TEST)
 
     testImplementation(TestLibraryDependency.KOIN_TEST)
 
 //    testImplementation(TestLibraryDependency.MOCKK)
 //    testImplementation(TestLibraryDependency.POWER_MOCK_JUNIT)
 //    testImplementation(TestLibraryDependency.POWER_MOCK_MOCKITO2)
+
+}
+
+fun DependencyHandler.addKaptDependencies() {
+    PersistenceKaptDependency.getAll().forEach { kapt(it) }
+    //CoreKaptDependency.getAll().forEach { kapt(it) }
 
 }
 
