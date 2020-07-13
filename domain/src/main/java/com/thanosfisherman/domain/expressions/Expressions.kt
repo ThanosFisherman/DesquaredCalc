@@ -5,6 +5,7 @@ import com.thanosfisherman.domain.expressions.internal.Function
 import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode
+import kotlin.math.sqrt
 
 class ExpressionException(message: String) : RuntimeException(message)
 
@@ -16,6 +17,14 @@ object Expressions {
         define("pi", Math.PI)
         define("e", Math.E)
 
+        evaluator.addFunction("sqrt", object : Function() {
+            override fun call(arguments: List<BigDecimal>): BigDecimal {
+                if (arguments.size != 1) throw ExpressionException(
+                    "sqrt requires one argument"
+                )
+                return sqrt(arguments.first().toDouble()).toBigDecimal()
+            }
+        })
         evaluator.addFunction("abs", object : Function() {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.size != 1) throw ExpressionException(

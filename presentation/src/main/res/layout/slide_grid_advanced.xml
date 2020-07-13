@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_600"
+    app:alignmentMode="alignBounds"
+    app:columnCount="3"
+    app:orientation="horizontal"
+    app:rowCount="3"
+    app:rowOrderPreserved="true"
+    app:useDefaultMargins="true">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_percent"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="%"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_power"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="^"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_root"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="√"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_pi"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="Π"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_e"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="e"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_log"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="log"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_ln"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="ln"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_left_paren"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text="("
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_right_paren"
+        style="@style/NumPadButton"
+        android:layout_width="0dp"
+        android:background="@drawable/ripple_circular"
+        android:text=")"
+        app:layout_columnSpan="1"
+        app:layout_columnWeight="1"
+        app:layout_rowSpan="1"
+        app:layout_rowWeight="1" />
+
+</androidx.gridlayout.widget.GridLayout>

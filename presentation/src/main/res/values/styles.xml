@@ -2,22 +2,22 @@
     <!-- Base application theme. -->
 
     <!-- Base application theme. -->
-    <style name="Theme.DesquaredCalc" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.DesquaredCalc" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/deep_purple_500</item>
         <item name="colorPrimaryDark">@color/deep_purple_700</item>
         <item name="colorSecondary">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="colorError">@color/red_A700</item>
-        <item name="android:textColor">@color/grey_800</item>
-        <item name="android:windowBackground">@color/grey_50</item>
+        <!--        <item name="android:textColor">@color/grey_800</item>-->
+        <item name="android:windowBackground">@color/grey_800</item>
         <item name="android:windowEnableSplitTouch">false</item>
         <item name="android:splitMotionEvents">false</item>
         <!--        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.SonicoLife.LargeComponent</item>-->
     </style>
 
     <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
-    <style name="Theme.DesquaredCalc.LaunchScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.DesquaredCalc.LaunchScreen" parent="Theme.MaterialComponents.NoActionBar">
 
         <item name="android:windowBackground">@drawable/splash_background</item>
 
@@ -36,6 +36,12 @@
     <style name="myDialogAnimations">
         <item name="android:windowEnterAnimation">@anim/slide_in_from_left</item>
         <item name="android:windowExitAnimation">@anim/slide_out_to_right</item>
+    </style>
+
+    <style name="NumPadButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="colorButtonNormal">@android:color/transparent</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

@@ -13,6 +13,7 @@ object LibraryVersion {
 
     //UI Versions
     const val androidxVersion = "1.1.0"
+    const val gridLayoutVersion = "1.0.0"
     const val lifecycleVersionX = "2.2.0"
     const val picassoVersion = "2.71828"
     const val constraintLayoutVersion = "2.0.0-beta6"
@@ -69,6 +70,7 @@ object CoreDependency {
 object UiDependency {
 
     const val androidX = "androidx.appcompat:appcompat:${LibraryVersion.androidxVersion}"
+    const val slidingPaneLayout = "androidx.slidingpanelayout:slidingpanelayout:${LibraryVersion.androidxVersion}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${LibraryVersion.constraintLayoutVersion}"
     const val viewModelLiveData = "androidx.lifecycle:lifecycle-extensions:${LibraryVersion.lifecycleVersionX}"
     const val reactiveStreamsLiveData = "androidx.lifecycle:lifecycle-reactivestreams:${LibraryVersion.lifecycleVersionX}"
@@ -82,6 +84,7 @@ object UiDependency {
     const val progressButton = "com.github.razir.progressbutton:progressbutton:${LibraryVersion.progressButtonVersion}"
     const val circleImageView = "de.hdodenhof:circleimageview:${LibraryVersion.circleImageView}"
     const val coil = "io.coil-kt:coil:${LibraryVersion.coilVersion}"
+    const val gridLayout = "androidx.gridlayout:gridlayout:${LibraryVersion.gridLayoutVersion}"
 
     fun getAll() = UiDependency::class.memberProperties
         .filter { it.isConst }
