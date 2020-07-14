@@ -11,6 +11,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_del"
         style="@style/NumPadButton"
+        android:layout_height="0dp"
         android:background="@drawable/ripple_circular"
         android:text="DEL"
         app:layout_columnSpan="1"
@@ -21,6 +22,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_div"
         style="@style/NumPadButton"
+        android:layout_height="0dp"
         android:background="@drawable/ripple_circular"
         android:text="÷"
         app:layout_columnSpan="1"
@@ -31,6 +33,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_multiply"
         style="@style/NumPadButton"
+        android:layout_height="0dp"
         android:background="@drawable/ripple_circular"
         android:text="*"
         app:layout_columnSpan="1"
@@ -41,6 +44,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_minus"
         style="@style/NumPadButton"
+        android:layout_height="0dp"
         android:background="@drawable/ripple_circular"
         android:text="-"
         app:layout_columnSpan="1"
@@ -51,6 +55,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_plus"
         style="@style/NumPadButton"
+        android:layout_height="0dp"
         android:background="@drawable/ripple_circular"
         android:text="+"
         app:layout_columnSpan="1"
