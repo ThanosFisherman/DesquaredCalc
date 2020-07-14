@@ -13,7 +13,7 @@ internal class Evaluator : ExprVisitor<BigDecimal> {
     private val functions: MutableMap<String, Function> = mutableMapOf()
 
     private fun define(name: String, value: BigDecimal) {
-        variables += name to value
+        variables[name] = value
     }
 
     fun define(name: String, expr: Expr): Evaluator {
@@ -23,8 +23,7 @@ internal class Evaluator : ExprVisitor<BigDecimal> {
     }
 
     fun addFunction(name: String, function: Function): Evaluator {
-        functions += name.toLowerCase() to function
-
+        functions[name.toLowerCase()] = function
         return this
     }
 

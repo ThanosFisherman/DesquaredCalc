@@ -5,6 +5,8 @@ import com.thanosfisherman.domain.expressions.internal.Function
 import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode
+import kotlin.math.ln
+import kotlin.math.log
 import kotlin.math.sqrt
 
 class ExpressionException(message: String) : RuntimeException(message)
@@ -15,9 +17,28 @@ object Expressions {
 
     init {
         define("pi", Math.PI)
+        define("Π", Math.PI)
         define("e", Math.E)
 
-        evaluator.addFunction("sqrt", object : Function() {
+        evaluator.addFunction("ln", object : Function {
+            override fun call(arguments: List<BigDecimal>): BigDecimal {
+                if (arguments.size != 1) throw ExpressionException(
+                    "ln requires one argument"
+                )
+                return ln(arguments.first().toDouble()).toBigDecimal()
+            }
+        })
+
+        evaluator.addFunction("log", object : Function {
+            override fun call(arguments: List<BigDecimal>): BigDecimal {
+                if (arguments.size != 1) throw ExpressionException(
+                    "log requires one argument"
+                )
+                return log(arguments.first().toDouble(), 10.toDouble()).toBigDecimal()
+            }
+        })
+
+        evaluator.addFunction("sqrt", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.size != 1) throw ExpressionException(
                     "sqrt requires one argument"
@@ -25,7 +46,7 @@ object Expressions {
                 return sqrt(arguments.first().toDouble()).toBigDecimal()
             }
         })
-        evaluator.addFunction("abs", object : Function() {
+        evaluator.addFunction("abs", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.size != 1) throw ExpressionException(
                     "abs requires one argument"
@@ -35,7 +56,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("sum", object : Function() {
+        evaluator.addFunction("sum", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.isEmpty()) throw ExpressionException(
                     "sum requires at least one argument"
@@ -47,7 +68,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("floor", object : Function() {
+        evaluator.addFunction("floor", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.size != 1) throw ExpressionException(
                     "abs requires one argument"
@@ -57,7 +78,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("ceil", object : Function() {
+        evaluator.addFunction("ceil", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.size != 1) throw ExpressionException(
                     "abs requires one argument"
@@ -67,7 +88,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("round", object : Function() {
+        evaluator.addFunction("round", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.size !in listOf(1, 2)) throw ExpressionException(
                     "round requires either one or two arguments"
@@ -80,7 +101,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("min", object : Function() {
+        evaluator.addFunction("min", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.isEmpty()) throw ExpressionException(
                     "min requires at least one argument"
@@ -90,7 +111,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("max", object : Function() {
+        evaluator.addFunction("max", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 if (arguments.isEmpty()) throw ExpressionException(
                     "max requires at least one argument"
@@ -100,7 +121,7 @@ object Expressions {
             }
         })
 
-        evaluator.addFunction("if", object : Function() {
+        evaluator.addFunction("if", object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 val condition = arguments[0]
                 val thenValue = arguments[1]
@@ -166,11 +187,10 @@ object Expressions {
     }
 
     fun addFunction(name: String, func: (List<BigDecimal>) -> BigDecimal): Expressions {
-        evaluator.addFunction(name, object : Function() {
+        evaluator.addFunction(name, object : Function {
             override fun call(arguments: List<BigDecimal>): BigDecimal {
                 return func(arguments)
             }
-
         })
 
         return this

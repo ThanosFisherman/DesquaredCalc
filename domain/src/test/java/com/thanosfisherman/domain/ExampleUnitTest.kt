@@ -20,7 +20,7 @@ class ExampleUnitTest {
     fun testExpressionParser() {
         val result = Expressions.setRoundingMode(RoundingMode.UP)
             .setPrecision(10)
-            .evalToString("sqrt(4/4y)")
+            .evalToString("log(4)")
 
         println(result)
     }

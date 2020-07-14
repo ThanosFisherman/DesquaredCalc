@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/grey_700"
     app:columnCount="1"
     app:orientation="horizontal"
-    app:rowCount="5">
+    app:rowCount="5"
+    tools:ignore="HardcodedText">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_del"

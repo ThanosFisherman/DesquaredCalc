@@ -16,7 +16,7 @@
         style="@style/NumPadButton"
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
-        android:text="%"
+        android:text="mod"
         app:layout_columnSpan="1"
         app:layout_columnWeight="1"
         app:layout_rowSpan="1"

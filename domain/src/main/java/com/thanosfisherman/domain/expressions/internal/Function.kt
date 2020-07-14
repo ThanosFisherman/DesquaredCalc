@@ -2,8 +2,8 @@ package com.thanosfisherman.domain.expressions.internal
 
 import java.math.BigDecimal
 
-abstract class Function {
+interface Function {
 
-    abstract fun call(arguments: List<BigDecimal>): BigDecimal
+    fun call(arguments: List<BigDecimal>): BigDecimal
 
 }
