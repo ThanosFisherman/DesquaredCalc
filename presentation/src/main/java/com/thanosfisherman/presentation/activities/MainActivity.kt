@@ -14,6 +14,7 @@ import com.thanosfisherman.presentation.R
 import com.thanosfisherman.presentation.common.extensions.reveal
 import com.thanosfisherman.presentation.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.display_panel.*
 import kotlinx.android.synthetic.main.grid_numbers.*
 import kotlinx.android.synthetic.main.grid_operators.*
 import kotlinx.android.synthetic.main.slide_grid_advanced.*
