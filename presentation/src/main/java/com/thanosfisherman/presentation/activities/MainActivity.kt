@@ -1,5 +1,7 @@
 package com.thanosfisherman.presentation.activities
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -9,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.thanosfisherman.domain.common.CalcResultState
 import com.thanosfisherman.domain.enums.PadType
 import com.thanosfisherman.presentation.R
+import com.thanosfisherman.presentation.common.extensions.reveal
 import com.thanosfisherman.presentation.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.grid_numbers.*
@@ -38,7 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun setDisplayState(calcResultState: CalcResultState<String>) {
         when (calcResultState) {
             is CalcResultState.Success -> {
-                output_text_view.text = calcResultState.data
+                text_display_below.text = calcResultState.data
             }
         }
     }
@@ -79,5 +82,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_ln.setOnClickListener(this)
         btn_left_paren.setOnClickListener(this)
         btn_right_paren.setOnClickListener(this)
+
+        btn_del.setOnLongClickListener { v ->
+
+            v.reveal(text_display_below, window, R.color.colorAccent, object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                }
+            })
+            return@setOnLongClickListener true
+        }
     }
 }
