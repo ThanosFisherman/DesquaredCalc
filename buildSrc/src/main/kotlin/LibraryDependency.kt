@@ -3,7 +3,7 @@ import kotlin.reflect.full.memberProperties
 object LibraryVersion {
 
     //Core Versions
-    const val koinVersion = "2.1.5"
+    const val koinVersion = "2.1.6"
     const val rxJavaVersion = "2.2.19"
     const val rxAndroidVersion = "2.1.1"
     const val rxKotlinVersion = "2.4.0"
@@ -16,7 +16,7 @@ object LibraryVersion {
     const val gridLayoutVersion = "1.0.0"
     const val lifecycleVersionX = "2.2.0"
     const val picassoVersion = "2.71828"
-    const val constraintLayoutVersion = "2.0.0-beta6"
+    const val constraintLayoutVersion = "2.0.0-beta8"
     const val recyclerViewVersion = "1.1.0"
     const val materialVersion = "1.2.0-beta01"
     const val mayIVersion = "2.3.0"
@@ -30,8 +30,8 @@ object LibraryVersion {
     //Network Versions
     const val retrofit2Version = "2.9.0"
     const val okioVersion = "2.5.0"
-    const val okhttpLoggingVersion = "4.7.2"
-    const val moshiVersion = "1.9.2"
+    const val okhttpLoggingVersion = "4.8.0"
+    const val moshiVersion = "1.9.3"
 
     //Bluetooth Versions
     const val blueFlowVersion = "1.1.0"
