@@ -9,10 +9,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import androidx.lifecycle.lifecycleScope
 import com.thanosfisherman.domain.common.CalcResultState
+import com.thanosfisherman.domain.common.NetworkResultState
 import com.thanosfisherman.domain.enums.PadType
+import com.thanosfisherman.domain.models.ExchangeModel
 import com.thanosfisherman.presentation.R
+import com.thanosfisherman.presentation.common.extensions.observe
 import com.thanosfisherman.presentation.common.extensions.reveal
 import com.thanosfisherman.presentation.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,10 +23,11 @@ import kotlinx.android.synthetic.main.grid_numbers.*
 import kotlinx.android.synthetic.main.grid_operators.*
 import kotlinx.android.synthetic.main.slide_grid_advanced.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
+@FlowPreview
 @ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -38,10 +41,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         sliding_pane.openPane()
 
         initPads()
-        mainViewModel.stateResult.onEach { setDisplayState(it) }.launchIn(lifecycleScope)
+        observe(mainViewModel.liveCalculateStateResult, ::getDisplayState)
+        observe(mainViewModel.liveNetworkStateResult, ::getExchangeState)
     }
 
-    private fun setDisplayState(calcResultState: CalcResultState<String>) {
+    private fun getExchangeState(networkResultState: NetworkResultState<ExchangeModel>) {
+        when (networkResultState) {
+            is NetworkResultState.Loading -> {
+                Timber.i("LOADING")
+            }
+            is NetworkResultState.Success -> {
+                Timber.i("SUCCESS ${networkResultState.data}")
+            }
+            is NetworkResultState.Error -> {
+                Timber.i("ERROR ${networkResultState.error}")
+            }
+        }
+    }
+
+    private fun getDisplayState(calcResultState: CalcResultState<String>) {
         when (calcResultState) {
             is CalcResultState.ClearAll -> {
                 clearAllTextsWithAnimation()
@@ -61,12 +79,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val btnText = (v as Button).text.toString()
-        val padType = PadType.getPadType(btnText)
-        mainViewModel.addExpression(padType)
+        if (v === btn_currency) {
+            mainViewModel.exchange("EUR", "USD")
+        } else {
+            val btnText = (v as Button).text.toString()
+            val padType = PadType.getPadType(btnText)
+            mainViewModel.addExpression(padType)
+        }
     }
 
     private fun initPads() {
+        btn_currency.setOnClickListener(this)
         btn_decimal.setOnClickListener(this)
         btn_equals.setOnClickListener(this)
 

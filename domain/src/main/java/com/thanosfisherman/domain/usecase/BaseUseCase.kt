@@ -1,25 +1,21 @@
 package com.thanosfisherman.domain.usecase
 
-import com.thanosfisherman.domain.common.CalcResultState
 import com.thanosfisherman.domain.common.cancelIfActive
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 
 
 @ExperimentalCoroutinesApi
-abstract class BaseUseCase<in Params, out Type> {
+abstract class BaseUseCase<in Params, State : Any> {
 
     private var job: Job? = null
-    val stateResult: MutableStateFlow<CalcResultState<String>> = MutableStateFlow(CalcResultState.SuccessEquals(""))
+    val channelResult: ConflatedBroadcastChannel<State> = ConflatedBroadcastChannel()
 
-    abstract fun execute(params: Params): Type
+    abstract suspend fun execute(params: Params)
 
     operator fun invoke(scope: CoroutineScope, params: Params) {
         job?.cancelIfActive()
-        job = scope.launch { execute(params) }
+        job = scope.launch(Dispatchers.IO) { execute(params) }
     }
 }
 

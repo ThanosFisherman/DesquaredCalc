@@ -8,12 +8,12 @@ import timber.log.Timber
 import java.math.RoundingMode
 
 @ExperimentalCoroutinesApi
-class CalculateUseCase : BaseUseCase<PadType, Unit>() {
+class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
 
     private val builder = StringBuilder()
 
     private var isEqualsPressed = false
-    override fun execute(params: PadType) {
+    override suspend fun execute(params: PadType) {
         val expressionResult = Expressions.setRoundingMode(RoundingMode.UP).setPrecision(20)
 
         when (params) {
@@ -21,7 +21,7 @@ class CalculateUseCase : BaseUseCase<PadType, Unit>() {
                 if (isEqualsPressed) {
                     isEqualsPressed = false
                     builder.clear()
-                    stateResult.value = CalcResultState.ClearAll
+                    channelResult.offer(CalcResultState.ClearAll)
                     return
                 } else {
                     if (builder.isNotEmpty())
@@ -30,7 +30,7 @@ class CalculateUseCase : BaseUseCase<PadType, Unit>() {
             }
             PadType.CLEAR_ALL -> {
                 builder.clear()
-                stateResult.value = CalcResultState.ClearAll
+                channelResult.offer(CalcResultState.ClearAll)
                 return
             }
             PadType.EQUALS -> {
@@ -46,7 +46,7 @@ class CalculateUseCase : BaseUseCase<PadType, Unit>() {
                     builder.append(result)
                 } catch (e: Throwable) {
                     Timber.i("ERROR")
-                    stateResult.value = CalcResultState.Error(e.cause?.message ?: e.message ?: "unknown error")
+                    channelResult.offer(CalcResultState.Error(e.cause?.message ?: e.message ?: "unknown error"))
                     builder.clear()
                     return
                 }
@@ -81,9 +81,9 @@ class CalculateUseCase : BaseUseCase<PadType, Unit>() {
             }
         }
         if (isEqualsPressed) {
-            stateResult.value = CalcResultState.SuccessEquals(builder.toString())
+            channelResult.offer(CalcResultState.SuccessEquals(builder.toString()))
         } else {
-            stateResult.value = CalcResultState.SuccessDigit(builder.toString())
+            channelResult.offer(CalcResultState.SuccessDigit(builder.toString()))
         }
     }
 }

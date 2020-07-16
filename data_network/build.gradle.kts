@@ -16,10 +16,10 @@ android {
 
     buildTypes {
         getByName(BuildType.DEBUG) {
-            buildConfigField("String", "BASE_URL", "\"https://gateway.marvel.com:443/v1/public/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.exchangeratesapi.io/\"")
         }
         getByName(BuildType.RELEASE) {
-            buildConfigField("String", "BASE_URL", "\"https://gateway.marvel.com:443/v1/public/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.exchangeratesapi.io/\"")
         }
     }
 }
