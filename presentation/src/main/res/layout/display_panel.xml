@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1.5"
-    android:orientation="vertical"
     android:animateLayoutChanges="true"
+    android:orientation="vertical"
     android:weightSum="1.5">
 
     <TextSwitcher
@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="end"
+            android:padding="8dp"
             android:textIsSelectable="true"
             app:autoSizeMaxTextSize="20sp"
             app:autoSizeMinTextSize="10sp"
@@ -33,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="end"
+            android:padding="8dp"
             android:textIsSelectable="true"
             app:autoSizeMaxTextSize="20sp"
             app:autoSizeMinTextSize="10sp"
@@ -55,6 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="end"
+            android:padding="8dp"
+            android:textColor="@color/white"
             android:textIsSelectable="true"
             app:autoSizeMaxTextSize="40sp"
             app:autoSizeMinTextSize="20sp"
@@ -66,6 +70,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="end"
+            android:padding="8dp"
+            android:textColor="@color/white"
             android:textIsSelectable="true"
             app:autoSizeMaxTextSize="40sp"
             app:autoSizeMinTextSize="20sp"

@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
-                android:background="@color/teal_600"
+                android:background="@color/teal_500"
                 android:gravity="center"
                 android:text="&lt;"
                 android:textAppearance="?android:textAppearanceMedium" />
