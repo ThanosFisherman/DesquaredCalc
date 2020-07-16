@@ -1,6 +1,8 @@
 package com.thanosfisherman.desquaredcalc
 
 import android.app.Application
+import com.thanosfisherman.data_network.di.networkingModule
+import com.thanosfisherman.data_network.di.networkingRepoModule
 import com.thanosfisherman.domain.di.domainModule
 import com.thanosfisherman.presentation.di.presentationModule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,7 +17,7 @@ class DesquaredCalcApp : Application() {
 
     private val presentationModules = listOf(presentationModule)
     private val domainModules = listOf(domainModule)
-
+    private val networkModules = listOf(networkingModule, networkingRepoModule)
     override fun onCreate() {
         super.onCreate()
         initKoin()
@@ -32,7 +34,7 @@ class DesquaredCalcApp : Application() {
         startKoin {
             androidContext(this@DesquaredCalcApp)
             if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
-            modules(presentationModules + domainModules)
+            modules(presentationModules + domainModules + networkModules)
         }
     }
 }
