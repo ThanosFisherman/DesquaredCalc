@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.lifecycleScope
 import com.thanosfisherman.domain.common.CalcResultState
 import com.thanosfisherman.domain.enums.PadType
@@ -23,7 +24,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun setDisplayState(calcResultState: CalcResultState<String>) {
         when (calcResultState) {
             is CalcResultState.ClearAll -> {
-                Timber.i("CLEAR ALL REQUEST")
                 clearAllTextsWithAnimation()
             }
             is CalcResultState.SuccessEquals -> {
@@ -105,11 +104,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun clearAllTextsWithAnimation() {
-        btn_del.reveal(switcher_below, window, R.color.colorAccent, object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                switcher_above.setCurrentText("")
-                switcher_below.setCurrentText("")
-            }
-        })
+
+        if (ViewCompat.isAttachedToWindow(window.decorView)) {
+            btn_del.reveal(switcher_below, window, R.color.colorAccent, object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    switcher_above.setCurrentText("")
+                    switcher_below.setCurrentText("")
+                }
+            })
+        }
     }
 }
