@@ -211,7 +211,8 @@ object Expressions {
             evaluator.eval(parse(expression)).round(evaluator.mathContext).stripTrailingZeros()
                 .toEngineeringString()
         } catch (e: Throwable) {
-            e.cause?.message ?: e.message ?: "unknown error"
+            //e.cause?.message ?: e.message ?: "unknown error"
+            throw e
         }
     }
 

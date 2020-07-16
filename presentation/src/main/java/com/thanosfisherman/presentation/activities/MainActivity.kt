@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +23,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -41,8 +43,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setDisplayState(calcResultState: CalcResultState<String>) {
         when (calcResultState) {
-            is CalcResultState.Success -> {
-                text_display_below.text = calcResultState.data
+            is CalcResultState.ClearAll -> {
+                Timber.i("CLEAR ALL REQUEST")
+                clearAllTextsWithAnimation()
+            }
+            is CalcResultState.SuccessEquals -> {
+                val currentTextBelow = (switcher_below.currentView as TextView).text.toString()
+                switcher_below.setText(calcResultState.data)
+                switcher_above.setText(currentTextBelow)
+            }
+            is CalcResultState.SuccessDigit -> {
+                switcher_below.setCurrentText(calcResultState.data)
+            }
+            is CalcResultState.Error -> {
+                switcher_above.setCurrentText(calcResultState.errorMsg)
             }
         }
     }
@@ -84,14 +98,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_left_paren.setOnClickListener(this)
         btn_right_paren.setOnClickListener(this)
 
-        btn_del.setOnLongClickListener { v ->
-
-            v.reveal(text_display_below, window, R.color.colorAccent, object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
-                    super.onAnimationEnd(animation)
-                }
-            })
+        btn_del.setOnLongClickListener {
+            mainViewModel.addExpression(PadType.CLEAR_ALL)
             return@setOnLongClickListener true
         }
+    }
+
+    private fun clearAllTextsWithAnimation() {
+        btn_del.reveal(switcher_below, window, R.color.colorAccent, object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                switcher_above.setCurrentText("")
+                switcher_below.setCurrentText("")
+            }
+        })
     }
 }

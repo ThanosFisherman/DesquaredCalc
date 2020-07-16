@@ -13,8 +13,7 @@ import kotlinx.coroutines.launch
 abstract class BaseUseCase<in Params, out Type> {
 
     private var job: Job? = null
-    val stateResult: MutableStateFlow<CalcResultState<String>> = MutableStateFlow(CalcResultState.Success(""))
-    val stateExpresion: MutableStateFlow<CalcResultState<String>> = MutableStateFlow(CalcResultState.Success(""))
+    val stateResult: MutableStateFlow<CalcResultState<String>> = MutableStateFlow(CalcResultState.SuccessEquals(""))
 
     abstract fun execute(params: Params): Type
 
