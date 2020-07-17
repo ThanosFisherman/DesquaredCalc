@@ -20,6 +20,9 @@ This app features the following technologies and coding practices.
 - Firebase Crashlytics for crash reporting
 - Material Components library
 - Splash screen
+- Retrofit for API requests
+- Moshi for content negotiation
+- And more I guess.
 
 ### Screenshots
 
