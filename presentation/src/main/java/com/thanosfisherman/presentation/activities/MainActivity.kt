@@ -12,10 +12,14 @@ import androidx.core.view.ViewCompat
 import com.thanosfisherman.domain.common.CalcResultState
 import com.thanosfisherman.domain.common.NetworkResultState
 import com.thanosfisherman.domain.enums.PadType
-import com.thanosfisherman.domain.models.ExchangeModel
+import com.thanosfisherman.domain.models.ConversionResultModel
 import com.thanosfisherman.presentation.R
 import com.thanosfisherman.presentation.common.extensions.observe
 import com.thanosfisherman.presentation.common.extensions.reveal
+import com.thanosfisherman.presentation.common.utils.FragmentUtils
+import com.thanosfisherman.presentation.common.utils.RapidSnack
+import com.thanosfisherman.presentation.fragments.ConvertDialogFragment
+import com.thanosfisherman.presentation.fragments.FragmentInteractionListener
 import com.thanosfisherman.presentation.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.display_panel.*
@@ -29,7 +33,7 @@ import timber.log.Timber
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, FragmentInteractionListener {
 
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -39,53 +43,60 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         sliding_pane.sliderFadeColor = ContextCompat.getColor(applicationContext, android.R.color.transparent)
         sliding_pane.openPane()
-
+        progressConvert.visibility = View.GONE
         initPads()
         observe(mainViewModel.liveCalculateStateResult, ::getDisplayState)
         observe(mainViewModel.liveNetworkStateResult, ::getExchangeState)
     }
 
-    private fun getExchangeState(networkResultState: NetworkResultState<ExchangeModel>) {
-        when (networkResultState) {
+    private fun getExchangeState(resultModel: NetworkResultState<ConversionResultModel>) {
+        when (resultModel) {
             is NetworkResultState.Loading -> {
-                Timber.i("LOADING")
+                progressConvert.visibility = View.VISIBLE
             }
             is NetworkResultState.Success -> {
-                Timber.i("SUCCESS ${networkResultState.data}")
+                progressConvert.visibility = View.GONE
+                val currentTextBelow = "${(switcher_below.currentView as TextView).text} ${resultModel.data.fromCurrency}"
+                switcher_below.setText("${resultModel.data.result} ${resultModel.data.toCurrency}")
+                switcher_above.setText(currentTextBelow)
+                Timber.i("SUCCESS ${resultModel.data.fromCurrency} ${resultModel.data.toCurrency} ${resultModel.data.result}")
             }
             is NetworkResultState.Error -> {
-                Timber.i("ERROR ${networkResultState.error}")
+                progressConvert.visibility = View.GONE
+                switcher_above.setCurrentText("ERROR ${resultModel.error}")
+                Timber.i("ERROR ${resultModel.error}")
             }
         }
     }
 
     private fun getDisplayState(calcResultState: CalcResultState<String>) {
+        progressConvert.visibility = View.GONE
+        val currentTextBelow = (switcher_below.currentView as TextView).text.toString()
         when (calcResultState) {
             is CalcResultState.ClearAll -> {
                 clearAllTextsWithAnimation()
             }
             is CalcResultState.SuccessEquals -> {
-                val currentTextBelow = (switcher_below.currentView as TextView).text.toString()
+
                 switcher_below.setText(calcResultState.data)
                 switcher_above.setText(currentTextBelow)
             }
             is CalcResultState.SuccessDigit -> {
                 switcher_below.setCurrentText(calcResultState.data)
             }
+            is CalcResultState.ShowConversionDialog -> {
+                FragmentUtils.showDialog(ConvertDialogFragment.newInstance(currentTextBelow), supportFragmentManager)
+            }
             is CalcResultState.Error -> {
-                switcher_above.setCurrentText(calcResultState.errorMsg)
+                switcher_above.setCurrentText("ERROR ${calcResultState.errorMsg}")
             }
         }
     }
 
     override fun onClick(v: View?) {
-        if (v === btn_currency) {
-            mainViewModel.exchange("EUR", "USD")
-        } else {
-            val btnText = (v as Button).text.toString()
-            val padType = PadType.getPadType(btnText)
-            mainViewModel.addExpression(padType)
-        }
+        val btnText = (v as Button).text.toString()
+        val padType = PadType.getPadType(btnText)
+        mainViewModel.addExpression(padType)
     }
 
     private fun initPads() {
@@ -136,5 +147,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             })
         }
+    }
+
+    override fun messageFromChildToParent(vararg values: String) {
+        if (values.isEmpty()) {
+            RapidSnack.error(window.decorView)
+            return
+        }
+        val currentTextBelow = (switcher_below.currentView as TextView).text.toString()
+        mainViewModel.exchange(values[0], values[1], currentTextBelow)
     }
 }

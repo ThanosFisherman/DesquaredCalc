@@ -1,82 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1.5"
-    android:animateLayoutChanges="true"
-    android:orientation="vertical"
     android:weightSum="1.5">
 
-    <TextSwitcher
-        android:id="@+id/switcher_above"
+    <ProgressBar
+        android:id="@+id/progressConvert"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center|start"
+        android:indeterminate="true"
+        android:padding="8dp"
+        android:visibility="gone" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:inAnimation="@anim/push_up_in"
-        android:outAnimation="@anim/push_up_out">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_display_above"
+        <TextSwitcher
+            android:id="@+id/switcher_above"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end"
-            android:padding="8dp"
-            android:textIsSelectable="true"
-            app:autoSizeMaxTextSize="20sp"
-            app:autoSizeMinTextSize="10sp"
-            app:autoSizeStepGranularity="4sp"
-            app:autoSizeTextType="uniform" />
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:animateLayoutChanges="true"
+            android:inAnimation="@anim/push_up_in"
+            android:outAnimation="@anim/push_up_out">
 
-        <TextView
-            android:id="@+id/text_display_above_alt"
+            <TextView
+                android:id="@+id/text_display_above"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:padding="8dp"
+                android:textIsSelectable="true"
+                app:autoSizeMaxTextSize="20sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeStepGranularity="4sp"
+                app:autoSizeTextType="uniform" />
+
+            <TextView
+                android:id="@+id/text_display_above_alt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:padding="8dp"
+                android:textIsSelectable="true"
+                app:autoSizeMaxTextSize="20sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeStepGranularity="4sp"
+                app:autoSizeTextType="uniform" />
+
+        </TextSwitcher>
+
+        <TextSwitcher
+            android:id="@+id/switcher_below"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end"
-            android:padding="8dp"
-            android:textIsSelectable="true"
-            app:autoSizeMaxTextSize="20sp"
-            app:autoSizeMinTextSize="10sp"
-            app:autoSizeStepGranularity="4sp"
-            app:autoSizeTextType="uniform" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:animateLayoutChanges="true"
+            android:inAnimation="@anim/push_up_in"
+            android:outAnimation="@anim/push_up_out">
 
-    </TextSwitcher>
+            <TextView
+                android:id="@+id/text_display_below"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                app:autoSizeMaxTextSize="40sp"
+                app:autoSizeMinTextSize="20sp"
+                app:autoSizeStepGranularity="4sp"
+                app:autoSizeTextType="uniform" />
 
-    <TextSwitcher
-        android:id="@+id/switcher_below"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:animateLayoutChanges="true"
-        android:inAnimation="@anim/push_up_in"
-        android:outAnimation="@anim/push_up_out">
+            <TextView
+                android:id="@+id/text_display_below_alt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                app:autoSizeMaxTextSize="40sp"
+                app:autoSizeMinTextSize="20sp"
+                app:autoSizeStepGranularity="4sp"
+                app:autoSizeTextType="uniform" />
 
-        <TextView
-            android:id="@+id/text_display_below"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:textIsSelectable="true"
-            app:autoSizeMaxTextSize="40sp"
-            app:autoSizeMinTextSize="20sp"
-            app:autoSizeStepGranularity="4sp"
-            app:autoSizeTextType="uniform" />
-
-        <TextView
-            android:id="@+id/text_display_below_alt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:textIsSelectable="true"
-            app:autoSizeMaxTextSize="40sp"
-            app:autoSizeMinTextSize="20sp"
-            app:autoSizeStepGranularity="4sp"
-            app:autoSizeTextType="uniform" />
-
-    </TextSwitcher>
-</LinearLayout>
+        </TextSwitcher>
+    </LinearLayout>
+</FrameLayout>

@@ -3,7 +3,7 @@ package com.thanosfisherman.presentation.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.thanosfisherman.domain.common.ExchangeUseCase
+import com.thanosfisherman.domain.usecase.ExchangeUseCase
 import com.thanosfisherman.domain.enums.PadType
 import com.thanosfisherman.domain.usecase.CalculateUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,7 +21,7 @@ class MainViewModel(private val calculateUseCase: CalculateUseCase, private val 
         calculateUseCase(viewModelScope, padType)
     }
 
-    fun exchange(fromSymbol: String, toSymbol: String) {
-        exchangeUseCase(viewModelScope, listOf(fromSymbol, toSymbol))
+    fun exchange(fromSymbol: String, toSymbol: String, amount: String) {
+        exchangeUseCase(viewModelScope, listOf(fromSymbol, toSymbol, amount))
     }
 }

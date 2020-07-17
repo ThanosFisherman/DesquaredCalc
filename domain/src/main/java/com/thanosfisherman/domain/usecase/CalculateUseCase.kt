@@ -28,6 +28,11 @@ class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
                         builder.deleteCharAt(builder.length - 1)
                 }
             }
+            PadType.CONVERT -> {
+                isEqualsPressed = true
+                channelResult.offer(CalcResultState.ShowConversionDialog)
+                return
+            }
             PadType.CLEAR_ALL -> {
                 builder.clear()
                 channelResult.offer(CalcResultState.ClearAll)

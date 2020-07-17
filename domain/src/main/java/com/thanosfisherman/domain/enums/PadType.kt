@@ -16,6 +16,7 @@ enum class PadType(val type: String) {
     NINE("9"),
     CLEAR("DEL"),
     CLEAR_ALL("AC"),
+    CONVERT("$$$"),
     PLUS("+"),
     MINUS("-"),
     MULTIPLY("*"),
