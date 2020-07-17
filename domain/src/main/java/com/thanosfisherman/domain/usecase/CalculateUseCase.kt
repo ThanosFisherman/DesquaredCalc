@@ -1,6 +1,7 @@
 package com.thanosfisherman.domain.usecase
 
 import com.thanosfisherman.domain.common.CalcResultState
+import com.thanosfisherman.domain.common.EventWrapper
 import com.thanosfisherman.domain.enums.PadType
 import com.thanosfisherman.domain.expressions.Expressions
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -8,7 +9,7 @@ import timber.log.Timber
 import java.math.RoundingMode
 
 @ExperimentalCoroutinesApi
-class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
+class CalculateUseCase : BaseUseCase<PadType, EventWrapper<CalcResultState<String>>>() {
 
     private val builder = StringBuilder()
 
@@ -21,7 +22,7 @@ class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
                 if (isEqualsPressed) {
                     isEqualsPressed = false
                     builder.clear()
-                    channelResult.offer(CalcResultState.ClearAll)
+                    channelResult.offer(EventWrapper(CalcResultState.ClearAll))
                     return
                 } else {
                     if (builder.isNotEmpty())
@@ -30,12 +31,12 @@ class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
             }
             PadType.CONVERT -> {
                 isEqualsPressed = true
-                channelResult.offer(CalcResultState.ShowConversionDialog)
+                channelResult.offer(EventWrapper(CalcResultState.ShowConversionDialog))
                 return
             }
             PadType.CLEAR_ALL -> {
                 builder.clear()
-                channelResult.offer(CalcResultState.ClearAll)
+                channelResult.offer(EventWrapper(CalcResultState.ClearAll))
                 return
             }
             PadType.EQUALS -> {
@@ -51,7 +52,7 @@ class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
                     builder.append(result)
                 } catch (e: Throwable) {
                     Timber.i("ERROR")
-                    channelResult.offer(CalcResultState.Error(e.cause?.message ?: e.message ?: "unknown error"))
+                    channelResult.offer(EventWrapper(CalcResultState.Error(e.cause?.message ?: e.message ?: "unknown error")))
                     builder.clear()
                     return
                 }
@@ -86,9 +87,9 @@ class CalculateUseCase : BaseUseCase<PadType, CalcResultState<String>>() {
             }
         }
         if (isEqualsPressed) {
-            channelResult.offer(CalcResultState.SuccessEquals(builder.toString()))
+            channelResult.offer(EventWrapper(CalcResultState.SuccessEquals(builder.toString())))
         } else {
-            channelResult.offer(CalcResultState.SuccessDigit(builder.toString()))
+            channelResult.offer(EventWrapper(CalcResultState.SuccessDigit(builder.toString())))
         }
     }
 }

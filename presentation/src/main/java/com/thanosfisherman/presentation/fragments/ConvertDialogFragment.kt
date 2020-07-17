@@ -45,14 +45,14 @@ class ConvertDialogFragment : AppCompatDialogFragment() {
         dropdownFrom.setOnItemClickListener { parent, _, position, id -> params[0] = parent.getItemAtPosition(position) as String }
         dropdownTo.setOnItemClickListener { parent, _, position, id -> params[1] = parent.getItemAtPosition(position) as String }
 
-        btnCancel.setOnClickListener { dialog?.hide() }
+        btnCancel.setOnClickListener { dismiss() }
         btnSubmit.setOnClickListener {
             if (params.any { it == null }) {
                 fragmentInteractor.messageFromChildToParent()
             } else {
                 fragmentInteractor.messageFromChildToParent(params[0]!!, params[1]!!)
             }
-            dialog?.hide()
+            dismiss()
         }
     }
 

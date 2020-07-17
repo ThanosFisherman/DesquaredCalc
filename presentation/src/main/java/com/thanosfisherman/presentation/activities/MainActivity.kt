@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.thanosfisherman.domain.common.CalcResultState
+import com.thanosfisherman.domain.common.EventWrapper
 import com.thanosfisherman.domain.common.NetworkResultState
 import com.thanosfisherman.domain.enums.PadType
 import com.thanosfisherman.domain.models.ConversionResultModel
@@ -69,26 +70,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, FragmentInteract
         }
     }
 
-    private fun getDisplayState(calcResultState: CalcResultState<String>) {
+    private fun getDisplayState(calcResultState: EventWrapper<CalcResultState<String>>) {
         progressConvert.visibility = View.GONE
         val currentTextBelow = (switcher_below.currentView as TextView).text.toString()
-        when (calcResultState) {
+        when (val state = calcResultState.peekContent()) {
             is CalcResultState.ClearAll -> {
                 clearAllTextsWithAnimation()
             }
             is CalcResultState.SuccessEquals -> {
 
-                switcher_below.setText(calcResultState.data)
+                switcher_below.setText(state.data)
                 switcher_above.setText(currentTextBelow)
             }
             is CalcResultState.SuccessDigit -> {
-                switcher_below.setCurrentText(calcResultState.data)
+                switcher_below.setCurrentText(state.data)
             }
             is CalcResultState.ShowConversionDialog -> {
-                FragmentUtils.showDialog(ConvertDialogFragment.newInstance(currentTextBelow), supportFragmentManager)
+                calcResultState.getContentIfNotHandled()?.let {
+                    FragmentUtils.showDialog(ConvertDialogFragment.newInstance(currentTextBelow), supportFragmentManager)
+                }
             }
             is CalcResultState.Error -> {
-                switcher_above.setCurrentText("ERROR ${calcResultState.errorMsg}")
+                switcher_above.setCurrentText("ERROR ${state.errorMsg}")
             }
         }
     }
