@@ -20,7 +20,6 @@ This app features the following technologies and coding practices.
 - Firebase Crashlytics for crash reporting
 - Material Components library
 - Splash screen
-- And more... (I may keep updating this list if something important pops up to my mind)
 
 ### Screenshots
 
