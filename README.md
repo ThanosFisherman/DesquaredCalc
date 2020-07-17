@@ -24,7 +24,8 @@ This app features the following technologies and coding practices.
 - Moshi for content negotiation
 - And more I guess.
 
-### Screenshots
+Screenshots
+---------------------
 
 ![image1](https://user-images.githubusercontent.com/4888330/87777222-c7d81000-c831-11ea-8cde-3e0e2a0e3322.png)
 ![image2](https://user-images.githubusercontent.com/4888330/87777267-dcb4a380-c831-11ea-897a-7074836d0559.png)
