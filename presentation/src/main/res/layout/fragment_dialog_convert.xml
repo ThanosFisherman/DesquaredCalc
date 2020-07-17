@@ -28,16 +28,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilFrom"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/convert_from">
 
                 <AutoCompleteTextView
                     android:id="@+id/dropdownFrom"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false" />
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,16 +52,17 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilTo"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/convert_to">
 
                 <AutoCompleteTextView
                     android:id="@+id/dropdownTo"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false" />
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

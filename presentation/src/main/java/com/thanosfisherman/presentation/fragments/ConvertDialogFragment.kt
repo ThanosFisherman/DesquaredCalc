@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatDialogFragment
 import com.thanosfisherman.presentation.R
+import com.thanosfisherman.presentation.adapters.CurrenciesArrayAdapter
 import kotlinx.android.synthetic.main.fragment_dialog_convert.*
 
 class ConvertDialogFragment : AppCompatDialogFragment() {
@@ -38,10 +38,9 @@ class ConvertDialogFragment : AppCompatDialogFragment() {
 
         textTitle.text = getString(R.string.convert, amountParam)
         val currencies = resources.getStringArray(R.array.currencies)
-        val adapterFrom = ArrayAdapter<String>(requireContext(), android.R.layout.simple_dropdown_item_1line, currencies)
-        val adapterTo = ArrayAdapter<String>(requireContext(), android.R.layout.simple_dropdown_item_1line, currencies)
-        dropdownFrom.setAdapter(adapterFrom)
-        dropdownTo.setAdapter(adapterTo)
+        val adapter = CurrenciesArrayAdapter(requireContext(), currencies.toList())
+        dropdownFrom.setAdapter(adapter)
+        dropdownTo.setAdapter(adapter)
 
         dropdownFrom.setOnItemClickListener { parent, _, position, id -> params[0] = parent.getItemAtPosition(position) as String }
         dropdownTo.setOnItemClickListener { parent, _, position, id -> params[1] = parent.getItemAtPosition(position) as String }
