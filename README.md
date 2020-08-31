@@ -1,11 +1,7 @@
 Desquared Calculator
 -------------------------
 
-This is the result of my assignment for Desquared company. **DesquaredCalc**. 
-
-### Basic functionality.
-Although the initial requirements were to build a simple calculator with a currency exchange feature, I decided to include some advanced capabilities as well due to the fact that they didn't require much additional work.
-Furthermore the initial instructions I was given wanted me to utilize the [fixer.io](https://fixer.io/) API for the currency exchange but their free plan was way too limited (practically unusable) so I went for [exchangeratesapi.io](https://exchangeratesapi.io/) instead which is entirely free
+It's a simple calculator with some Advanced capabilities and a currency exchange feature via [exchangeratesapi.io](https://exchangeratesapi.io/) API
 
 ### Tech stack used.
 
