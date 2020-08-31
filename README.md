@@ -1,7 +1,7 @@
 Desquared Calculator
 -------------------------
 
-It's a simple calculator with some Advanced capabilities and a currency exchange feature via [exchangeratesapi.io](https://exchangeratesapi.io/) API
+It's a simple calculator with some Advanced capabilities and a currency exchange feature via [exchangeratesapi.io](https://exchangeratesapi.io/) API.
 
 ### Tech stack used.
 
@@ -12,12 +12,13 @@ This app features the following technologies and coding practices.
 - Clean architecture principles
 - Module separation for each layer (domain, presentation, data). I decided to use modules for better separation of concerns and to demostrate how I would approach a large production grade app.
 - Coroutines for asynchronous calls. Suspending functions, Flow and Channels.
-- A Hybrid of MVVM-MVI approach. I use ViewModels with LiveData that emit `sealed` classes as states. The UI decides what to do based on the state received.
+- MVVM approach. I use ViewModels with LiveData that emit `sealed` classes as states. The UI decides what to do based on the state received.
 - Firebase Crashlytics for crash reporting
 - Material Components library
 - Splash screen
 - Retrofit for API requests
 - Moshi for content negotiation
+- A modified version of [ExprK](https://github.com/Keelar/ExprK) for numerical expressions
 - And more I guess.
 
 Screenshots
