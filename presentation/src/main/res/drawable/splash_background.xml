@@ -11,7 +11,7 @@
         <bitmap
             android:antialias="true"
             android:gravity="center"
-            android:src="@drawable/desquared_logo" />
+            android:src="@drawable/calc_logo" />
 
     </item>
 
