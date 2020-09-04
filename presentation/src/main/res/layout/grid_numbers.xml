@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="0dp"
     android:layout_height="match_parent"
     android:layout_weight="2"
-    app:alignmentMode="alignBounds"
-    app:columnCount="3"
-    app:orientation="horizontal"
-    app:rowCount="4"
-    app:rowOrderPreserved="true"
-    app:useDefaultMargins="true"
+    android:alignmentMode="alignBounds"
+    android:columnCount="3"
+    android:orientation="horizontal"
+    android:rowCount="4"
+    android:rowOrderPreserved="true"
+    android:useDefaultMargins="true"
     tools:ignore="HardcodedText">
 
     <com.google.android.material.button.MaterialButton
@@ -19,10 +18,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="7"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_8"
@@ -30,10 +29,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="8"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_9"
@@ -41,10 +40,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="9"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_4"
@@ -52,10 +51,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="4"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_5"
@@ -63,10 +62,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="5"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_6"
@@ -74,10 +73,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="6"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_1"
@@ -85,10 +84,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="1"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_2"
@@ -96,10 +95,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="2"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_3"
@@ -107,10 +106,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="3"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_decimal"
@@ -118,10 +117,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="."
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_0"
@@ -129,10 +128,10 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="0"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_equals"
@@ -140,9 +139,9 @@
         android:layout_width="0dp"
         android:background="@drawable/ripple_circular"
         android:text="="
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1" />
 
-</androidx.gridlayout.widget.GridLayout>
+</GridLayout>

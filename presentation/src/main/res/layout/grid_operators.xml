@@ -1,78 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/grey_700"
-    app:columnCount="1"
-    app:orientation="horizontal"
-    app:rowCount="5"
+    android:columnCount="1"
+    android:orientation="horizontal"
+    android:rowCount="5"
     tools:ignore="HardcodedText">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_del"
         style="@style/NumPadButton"
         android:layout_height="0dp"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
         android:background="@drawable/ripple_circular"
-        android:text="DEL"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:text="DEL" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_currency"
         style="@style/NumPadButton"
         android:layout_height="0dp"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
         android:background="@drawable/ripple_circular"
-        android:text="$$$"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:text="$$$" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_div"
         style="@style/NumPadButton"
         android:layout_height="0dp"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
         android:background="@drawable/ripple_circular"
-        android:text="÷"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:text="÷" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_multiply"
         style="@style/NumPadButton"
         android:layout_height="0dp"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
         android:background="@drawable/ripple_circular"
-        android:text="*"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:text="*" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_minus"
         style="@style/NumPadButton"
         android:layout_height="0dp"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
         android:background="@drawable/ripple_circular"
-        android:text="-"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
+        android:text="-" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_plus"
         style="@style/NumPadButton"
         android:layout_height="0dp"
+        android:layout_rowSpan="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
         android:background="@drawable/ripple_circular"
-        android:text="+"
-        app:layout_columnSpan="1"
-        app:layout_columnWeight="1"
-        app:layout_rowSpan="1"
-        app:layout_rowWeight="1" />
-</androidx.gridlayout.widget.GridLayout>
+        android:text="+" />
+</GridLayout>

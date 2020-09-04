@@ -84,7 +84,7 @@ object UiDependency {
     const val progressButton = "com.github.razir.progressbutton:progressbutton:${LibraryVersion.progressButtonVersion}"
     const val circleImageView = "de.hdodenhof:circleimageview:${LibraryVersion.circleImageView}"
     const val coil = "io.coil-kt:coil:${LibraryVersion.coilVersion}"
-    const val gridLayout = "androidx.gridlayout:gridlayout:${LibraryVersion.gridLayoutVersion}"
+    //const val gridLayout = "androidx.gridlayout:gridlayout:${LibraryVersion.gridLayoutVersion}"
 
     fun getAll() = UiDependency::class.memberProperties
         .filter { it.isConst }
